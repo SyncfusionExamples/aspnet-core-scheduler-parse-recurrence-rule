@@ -1,0 +1,45 @@
+﻿@{
+    /**/
+
+    ViewBag.Title = "Home Page";
+
+}
+
+<div>
+    Recurrence Editor
+</div>
+<div>
+    @Html.EJS().RecurrenceEditor("RecurrenceEditor").Change("onChange").Render()
+</div>
+<div style="height:25px"></div>
+<div>
+    Parsed Date Collection
+</div>
+<div>
+    <div id="Collection"></div>
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<script type="text/javascript">
+    function onChange(args) {
+        var recurrenceObj = document.getElementById("RecurrenceEditor").ej2_instances[0];
+        var dates = recurrenceObj.getRecurrenceDates(new Date(), args.value); // Here the first argument should be the start date and second argument is the recurrcen rule
+        $.ajax({
+            url: '@Url.Action("getDates", "Home")',
+            data: { 'dates': JSON.stringify(args.value)},
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                console.log(result);
+                $("#Collection").html("");
+                var object = [];
+                for (var i = 0; i < result.length; i++) {
+                    object.push(new Date(result[i].match(/\d+/)[0] * 1));
+                }
+                for (var i = 0; i < object.length; i++) {                    
+                    $("#Collection").append('<div id="date_' + i + '">' + object[i] + '</div>');
+                }
+            }
+        });
+    }
+</script>
