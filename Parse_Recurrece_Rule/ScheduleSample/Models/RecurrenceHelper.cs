@@ -78,6 +78,10 @@ namespace ScheduleSample
             {
                 FindExdateList(RecException);
             }
+            if (exDateList.Contains(RecStartDate.Date))
+            {
+                return new List<DateTime> { RecStartDate.Date };
+            }
             if (ruleArray.Length != 0 && RRule != "")
             {
                 DateTime addDate = startDate;
@@ -87,7 +91,7 @@ namespace ScheduleSample
                 #region DAILY
                 if (DAILY == "DAILY")
                 {
-
+                
                     if ((ruleArray.Length > 4 && INTERVAL == "INTERVAL") || ruleArray.Length == 4)
                     {
                         int DyDayGap = ruleArray.Length == 4 ? 1 : int.Parse(INTERVALCOUNT);
