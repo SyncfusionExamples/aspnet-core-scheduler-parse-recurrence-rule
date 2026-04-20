@@ -22,8 +22,10 @@ This repository contains a small example application that shows server-side hand
 ## Usage
 Run the sample and use the scheduler UI to create recurring events. The server-side example demonstrates how recurrence rule strings can be parsed and handled in application logic.
 
-## Contributing
-Contributions are welcome as fixes or clarifications to the example code and README.
+## Documentation
 
-## License & Support
-Refer to repository files for any licensing notes. For issues or questions, review the sample code included in this repository.
+- **Framework Documentation:** Introduction and overall integration guide for Essential JavaScript (EJ2) with ASP.NET Core — https://ej2.syncfusion.com/aspnetcore/documentation/introduction
+
+- **Schedule Component (Getting Started):** Component-level docs and examples for the Scheduler (including recurrence and server-side patterns) — https://ej2.syncfusion.com/aspnetcore/documentation/schedule/getting-started
+
+You can use the links above for full API references, integration samples, and server-side guidance related to recurrence rules and scheduling.
